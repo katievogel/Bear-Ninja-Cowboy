@@ -1,0 +1,7 @@
+;; shadow-cljs configuration
+{:source-paths ["src"]
+ :dependencies []
+ :builds
+               {:app {:target    :node-script
+                      :output-to "b-n-c.js"
+                      :main      katie-e-vogel-main.core/init!}}}
