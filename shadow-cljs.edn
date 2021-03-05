@@ -1,7 +1,19 @@
 ;; shadow-cljs configuration
 {:source-paths ["src"]
- :dependencies []
+ :dependencies [[binaryage/oops "0.7.0"]
+                [macchiato/hiccups "0.4.1"]
+                [cljs-ajax "0.8.1"]]
+
  :builds
-               {:app {:target    :node-script
-                      :output-to "b-n-c.js"
-                      :main      katie-e-vogel-main.core/init!}}}
+               ;{:app {:target    :node-script
+               ;       :output-to "b-n-c.js"
+               ;       :main      katie-e-vogel-main.core/init!}}
+
+               {:app {:target :browser
+                      :output-dir "public/js"
+                      ;:main katie-e-vogel-main.core/init!
+                      :modules {:main {:entries [katie-e-vogel-main.core]}}
+                      :devtools {:repl-init-ns katie-e-vogel-main.core
+                                 :repl-pprint true
+                                 :http-root "public/"
+                                 :http-port 8080}}}}

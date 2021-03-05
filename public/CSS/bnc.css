@@ -1,0 +1,52 @@
+#appContainer {
+    margin: auto;
+    padding: 20px;
+    max-width: 1200px;
+    text-align: center;
+}
+
+.row {
+    margin: auto;
+    padding: 30px;
+}
+
+.result {
+    margin: auto;
+    padding: 10px;
+    text-align: center;
+}
+
+.funny-gif {
+    margin: auto;
+    padding: 30px;
+    text-align: center;
+}
+
+.game-container {
+    margin: auto;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 3px;
+    border-color: gray;
+    padding: 10px;
+}
+
+.choice {
+    margin: 20;
+    text-align: center;
+    max-width: 350px;
+}
+
+img {
+    max-height: 400px;
+    max-width: 300px;
+    display: inline;
+}
+
+button {
+    margin: 20px;
+    border-radius: 3px;
+    background-color: none;
+    display: inline;
+}
+
