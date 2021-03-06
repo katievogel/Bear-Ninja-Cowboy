@@ -4,17 +4,33 @@
             [katie-e-vogel-main.game-logic]
             [katie-e-vogel-main.player-chat]
             [katie-e-vogel-main.player-management]
-            [katie-e-vogel-main.player-connection]
             [katie-e-vogel-main.html]
             [goog.dom :as gdom]
             [oops.core :refer [ocall oget oset!]]))
 
-(defn set-app-html!
-  [html-str]
-  (let [el (gdom/getElement "appContainer")]
-    (oset! el "innerHTML" html-str)))
 
-(defonce state (atom 1))
+
+
+(defonce state (atom {:p1-choice nil
+                      :p2-choice nil}))
+
+(defn click-bnc-button [choice]
+  (println "in button" choice)
+  (swap! state (fn [v] (assoc v :p1-choice choice))))
+
+(defn init-handlers! []
+  (let [el (.querySelector js/document ".btn-b")]
+    (.addEventListener el "click" (fn [event]
+                                    (println "bear" event)
+                                    (click-bnc-button :bear))))
+  (let [el (.querySelector js/document ".btn-n")]
+    (.addEventListener el "click" (fn [event]
+                                    (println "ninja" event)
+                                    (click-bnc-button :ninja))))
+  (let [el (.querySelector js/document ".btn-c")]
+    (.addEventListener el "click" (fn [event]
+                                    (println "cowboy" event)
+                                    (click-bnc-button :cowboy)))))
 
 (hiccups/defhtml
   render-bnc [v]
@@ -28,18 +44,23 @@
     [:div {:class "choices-box row"}
      [:div {:class "choice container-md col-3"} [:button {:type "input" :class "btn-b btn-dark"} [:img {:src "assets/happy-bear.jpg"}]]]
      [:div {:class "choice container-md col-3"} [:button {:type "input" :class "btn-n btn-dark"} [:img {:src "assets/cat-ninja.jpg"}]]]
-     [:div {:class "choice container-md col-3"} [:button {:type "input" :class "btn-c btn-dark"} [:img {:src "assets/ridiculous-cowboy.jpg"}]]]]]])
+     [:div {:class "choice container-md col-3"} [:button {:type "input" :class "btn-c btn-dark"} [:img {:src "assets/ridiculous-cowboy.jpg"}]]]]]
+   [:hr]
+   [:h1 "debug"]
+   [:pre (pr-str v)]])
 
+(defn set-app-html!
+  [html-str]
+  (let [el (gdom/getElement "appContainer")]
+    (oset! el "innerHTML" html-str)
+    (init-handlers!)))
 
 (defn render-ui! [_ _ prev-val new-val]
   (set-app-html! (render-bnc new-val)))
 
-(comment
-  (render-ui! nil nil nil @state))
-
-
 (defn init! []
   (add-watch state :render-ui render-ui!)
+  (render-ui! nil nil nil @state)
   #_(add-watch state :render-gif render-gif!)
   (println "running"))
 
