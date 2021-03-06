@@ -28,11 +28,15 @@
 ;onClick of bear, ninja, or cowboy button, run game-action function form game-logic ns
 ;try to get button click to register a choice in repl
 ;winner score increases
-
+(swap! players
+       (fn [players]
+         (-> players
+             (update :p1-choice pick-bnc)
+             (update :p2-choice pick-bnc))))
 ;(swap! players :p1-choice pick-bnc)
 ;(swap! players :p2-choice pick-bnc)
 
 (def init-dom-events!
   (gfunctions/once
     (fn []
-      (ocall (gdom/getElement "btn") "addEventListener" "click" click-bnc-button))))
+      (ocall (gdom/getElement "appContainer") "addEventListener" "click" click-bnc-button))))
