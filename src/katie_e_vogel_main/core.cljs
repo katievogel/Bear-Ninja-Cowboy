@@ -1,7 +1,7 @@
 (ns katie-e-vogel-main.core
   (:require-macros [hiccups.core :as hiccups :refer [html]])
   (:require #_[katie-e-vogel-main.api-connections]
-            [katie-e-vogel-main.game-logic]
+            [katie-e-vogel-main.game-logic :refer [game-action]]
             [katie-e-vogel-main.player-chat]
             [katie-e-vogel-main.player-management]
             [katie-e-vogel-main.html]
@@ -9,14 +9,19 @@
             [oops.core :refer [ocall oget oset!]]))
 
 
-
-
 (defonce state (atom {:p1-choice nil
                       :p2-choice nil}))
 
-(defn click-bnc-button [choice]
-  (println "in button" choice)
-  (swap! state (fn [v] (assoc v :p1-choice choice))))
+(defn click-bnc-button [p1-choice]
+  (println "in button" p1-choice)
+  (swap! state (fn [v]
+                 (let [p2-choice (rand-nth [:bear :ninja :cowboy])]
+                   (assoc v
+                     :p1-choice p1-choice
+                     :p2-choice p2-choice
+                     :winner (game-action p1-choice p2-choice))))))
+
+(comment (game-action :bear :ninja))
 
 (defn init-handlers! []
   (let [el (.querySelector js/document ".btn-b")]
