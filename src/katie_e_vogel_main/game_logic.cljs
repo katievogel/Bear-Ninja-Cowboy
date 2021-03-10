@@ -4,10 +4,6 @@
 ;ninja karate chops cowboy
 ;cowboy shoots bear
 
-;(def rules ({:bear [:cowboy :ninja :bear]
-;             :cowboy [:ninja :bear :cowboy]
-;             :ninja [:bear :cowboy :ninja]}))
-
 (defn game-action [p1-choice p2-choice]
   (cond
     (and (= p1-choice :bear) (= p2-choice :ninja)) :p1
