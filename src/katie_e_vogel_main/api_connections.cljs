@@ -14,8 +14,8 @@
                                      :ninja "ninja"
                                      :cowboy "cowboy"
                                      :tie "tie-game")
-                          :limit   1
-                          :offset  0
+                          :limit   25
+                          :offset  (rand-int 25)
                           :rating  "g"
                           :lang    "en"}
         :handler         (fn [gif-url]
@@ -24,6 +24,8 @@
         :response-format :json
         :keywords?       true}))
 
+(comment
+  (rand-int 10))
 
 (comment
   (fetch-gif! :bear)
