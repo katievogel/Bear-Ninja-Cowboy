@@ -2,7 +2,7 @@
   (:require [ajax.core :refer [GET]]))
 
 ;connect to giphy API
-;generate bear, ninja, or cowboy based on winner
+;generate bear, ninja, or cowboy using winner as search query
 
 
 (defn fetch-gif! [winner success-callback]
@@ -25,9 +25,6 @@
         :keywords?       true}))
 
 (comment
-  (rand-int 10))
-
-(comment
   (fetch-gif! :bear)
   (fetch-gif! :ninja)
   (fetch-gif! :cowboy)
@@ -36,11 +33,6 @@
                       (reset! result v)
                       (println "success" v))))
 ;@result
-
 ;(get-in @result [:data 0 :images :downsized_medium :url])
-;
-;  (count (:data v'))
-;  (first (:data v'))
-;  (keys (first (:data v')))
-;
+
 
