@@ -5,20 +5,18 @@
             [goog.functions :as gfunctions]
             [oops.core :refer [ocall oget oset!]]))
 
-;this should go in the state file
+
 (defonce state (atom {:p1-choice nil
                       :p2-choice nil
                       :winner nil
                       :p1-score 0
                       :p2-score 0}))
 
+;test case for debugging
 (comment
   (score :p1 @state))
 
 
-(comment (game-action :bear :ninja))
-
-;stays in core?
 (defn init-handlers! []
   (let [el (.querySelector js/document ".btn-b")]
     (.addEventListener el "click" (fn [event]
@@ -33,14 +31,6 @@
                                     (println "cowboy" event)
                                     (click-bnc-button state :cowboy)))))
 
-(comment
-  (let [p1-choice :bear
-        p2-choice :ninja]
-    (case [p1-choice p2-choice]
-      [:bear :ninja] "Bear bites ninja!")))
-
-
-;stays in core file?
 (defn set-app-html!
   [html-str]
   (let [el (gdom/getElement "appContainer")]
