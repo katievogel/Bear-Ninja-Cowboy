@@ -1,9 +1,6 @@
 (ns katie-e-vogel-main.player-interaction
   (:require [katie-e-vogel-main.game-logic :refer [game-action]]
-            [katie-e-vogel-main.api-connections :refer [fetch-gif!]]
-            [goog.dom :as gdom]
-            [goog.functions :as gfunctions]
-            [oops.core :refer [ocall oget oset!]]))
+            [katie-e-vogel-main.api-connections :refer [fetch-gif!]]))
 
 
 (defn click-bnc-button [state p1-choice]
@@ -28,3 +25,10 @@
                      :p2-score (case winner
                                  :p2 (inc (:p2-score v 0))
                                  (:p2-score v)))))))
+
+;test case for debugging
+(comment
+  (let [p1-choice :bear
+        p2-choice :ninja]
+    (case [p1-choice p2-choice]
+      [:bear :ninja] "Bear bites ninja!")))
