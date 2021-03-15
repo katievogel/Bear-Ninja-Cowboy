@@ -11,7 +11,7 @@
 
                {:app {:target :browser
                       :output-dir "public/js"
-                      ;:main katie-e-vogel-main.core/init!
+                      :main katie-e-vogel-main.core/init!
                       :modules {:main {:entries [katie-e-vogel-main.core]}}
                       :devtools {:repl-init-ns katie-e-vogel-main.core
                                  :repl-pprint true
