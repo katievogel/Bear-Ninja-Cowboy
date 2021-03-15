@@ -1,7 +1,7 @@
 (ns katie-e-vogel-main.game-logic)
 
 ;bear bites ninja
-;ninja karate chops cowboy
+;ninja strikes cowboy
 ;cowboy shoots bear
 
 (defn game-action [p1-choice p2-choice]
@@ -20,5 +20,3 @@
   (game-action :bear :ninja)
   (game-action :bear :cowboy)
   (game-action :bear :bear))
-
-
