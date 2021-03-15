@@ -1,28 +1,30 @@
 (ns katie-e-vogel-main.player-interaction
-  (:require [goog.dom :as gdom]
+  (:require [katie-e-vogel-main.game-logic :refer [game-action]]
+            [katie-e-vogel-main.api-connections :refer [fetch-gif!]]
+            [goog.dom :as gdom]
             [goog.functions :as gfunctions]
             [oops.core :refer [ocall oget oset!]]))
 
-;player1 clicks a b n or c button as choice
-;choice is saved somewhere
-;player2 clicks a b n or c button as choice
-;choice is saved somewhere
-;choice is reset to initial state of nil after match
 
-;multiple players or play against computer, randomized?
-
-
-
-
-
-;onClick of bear, ninja, or cowboy button, run game-action function form game-logic ns
-;try to get button click to register a choice in repl
-;winner score increases
-;(swap! players
-;       (fn [players]
-;         (-> players
-;             (update :p1-choice pick-bnc)
-;             (update :p2-choice pick-bnc))))
-;(swap! players :p1-choice pick-bnc)
-;(swap! players :p2-choice pick-bnc)
-
+(defn click-bnc-button [p1-choice]
+  (println "in button" p1-choice)
+  (let [p2-choice (rand-nth [:bear :ninja :cowboy])
+        winner (game-action p1-choice p2-choice)]
+    (fetch-gif! (case winner
+                  :p1 p1-choice
+                  :p2 p2-choice
+                  :tie :tie)
+                (fn [v]
+                  (swap! state (fn [o]
+                                 (assoc o :winner-gif v)))))
+    (swap! state (fn [v]
+                   (assoc v
+                     :p1-choice p1-choice
+                     :p2-choice p2-choice
+                     :winner winner
+                     :p1-score (case winner
+                                 :p1 (inc (:p1-score v 0))
+                                 (:p1-score v))
+                     :p2-score (case winner
+                                 :p2 (inc (:p2-score v 0))
+                                 (:p2-score v)))))))
