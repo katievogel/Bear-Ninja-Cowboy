@@ -5,6 +5,7 @@
             [katie-e-vogel-main.player-management]
             [katie-e-vogel-main.html]
             [goog.dom :as gdom]
+            [goog.functions :as gfunctions]
             [oops.core :refer [ocall oget oset!]]))
 
 ;this should go in the state file
@@ -92,10 +93,11 @@
        [:div {:class "card-body"} p1-score]]
       [:div {:class "funny-gif"}
        (if winner-gif
-         [:img {:src winner-gif}]
-         [:div [:h3 "Welcome to Bear Ninja Cowboy!"]
+         [:div {:class "gif"}
+          [:img {:src winner-gif}]]
+         [:div {:class "rules"} [:h3 "Welcome to Bear Ninja Cowboy!"]
           [:p "It's played just like Rock Paper Scissors, but with bears, ninjas, and cowboys."
-           [:ul {:class "rules"}
+           [:ul
             [:li "Bear beats Ninja. Ninja beats Cowboy. Cowboy beats Bear."]
             [:li "Click on an image below to select your choice"]
             [:li "Player 2 (the computer) will pick randomly"]
@@ -121,9 +123,10 @@
 (defn render-ui! [_ _ _prev-val new-val]
   (set-app-html! (render-bnc new-val)))
 
-(defn init! []
-  (add-watch state :render-ui render-ui!)
-  (render-ui! nil nil nil @state)
-  (println "running"))
+(def init! (gfunctions/once (fn []
+                              (add-watch state :render-ui render-ui!)
+                              (render-ui! nil nil nil @state)
+                              (println "running"))))
 
-(comment (init!))
+(init!)
+

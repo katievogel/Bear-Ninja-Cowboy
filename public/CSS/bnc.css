@@ -30,15 +30,23 @@ body {
     font-family: 'Arvo', serif;
 }
 
-.funny-gif{
-    margin: auto;
-    text-align: center;
-    display: inline;
+.rules {
+    font-family: 'Arvo', serif;
+    display: inline-block;
 }
 
-.container {
-    align-content: center;
+.funny-gif {
     margin: auto;
+    text-align: center;
+}
+
+.gif {
+    height: 400px;
+    width: 600px;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
 }
 
 .game-container {
@@ -55,14 +63,14 @@ body {
 img {
     max-height: 400px;
     max-width: 300px;
-    display: inline;
+    display: block;
     margin: auto;
 }
 
 button {
     margin: 20px;
-    border-radius: 3px;
-    background-color: none;
+    border: none;
+    background-color: transparent;
     display: inline;
 }
 
@@ -73,6 +81,7 @@ button {
     font-size: x-large;
     border: none;
     margin: auto;
+    display: inline-block;
 }
 
 .card-header {
@@ -94,8 +103,4 @@ button {
     font-size: x-large;
     border: none;
     font-family: 'Arvo', serif;
-}
-
-.score {
-    display: inline;
 }
