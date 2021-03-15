@@ -6,7 +6,7 @@
             [oops.core :refer [ocall oget oset!]]))
 
 
-(defn click-bnc-button [p1-choice]
+(defn click-bnc-button [state p1-choice]
   (println "in button" p1-choice)
   (let [p2-choice (rand-nth [:bear :ninja :cowboy])
         winner (game-action p1-choice p2-choice)]

@@ -12,9 +12,6 @@
                       :p1-score 0
                       :p2-score 0}))
 
-;add this to html-cljs file
-
-
 (comment
   (score :p1 @state))
 
@@ -26,15 +23,15 @@
   (let [el (.querySelector js/document ".btn-b")]
     (.addEventListener el "click" (fn [event]
                                     (println "bear" event)
-                                    (click-bnc-button :bear))))
+                                    (click-bnc-button state :bear))))
   (let [el (.querySelector js/document ".btn-n")]
     (.addEventListener el "click" (fn [event]
                                     (println "ninja" event)
-                                    (click-bnc-button :ninja))))
+                                    (click-bnc-button state :ninja))))
   (let [el (.querySelector js/document ".btn-c")]
     (.addEventListener el "click" (fn [event]
                                     (println "cowboy" event)
-                                    (click-bnc-button :cowboy)))))
+                                    (click-bnc-button state :cowboy)))))
 
 (comment
   (let [p1-choice :bear
