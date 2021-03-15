@@ -13,8 +13,8 @@
                                      :bear "bear"
                                      :ninja "ninja"
                                      :cowboy "cowboy"
-                                     :tie "tie-game")
-                          :limit   25
+                                     :tie "tug of war")
+                          :limit   100
                           :offset  (rand-int 25)
                           :rating  "g"
                           :lang    "en"}
@@ -24,6 +24,7 @@
         :response-format :json
         :keywords?       true}))
 
+;test case for debugging
 (comment
   (fetch-gif! :bear)
   (fetch-gif! :ninja)
