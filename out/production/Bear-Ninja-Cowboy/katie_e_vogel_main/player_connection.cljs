@@ -1,1 +1,0 @@
-;players open browser and creates player name
