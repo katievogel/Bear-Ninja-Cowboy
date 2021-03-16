@@ -13,9 +13,17 @@ This was my first real dive in Clojurescript outside of CLI scripts and running 
 
 The Hiccup library made the HTML pretty clean, though it seemed a bit finicky about adding classes or other attributes to tags. On occasion I would add something but it would just display the code text on the browser page. Not quite sure why, but I just worked around it. CSS had it's own share of problems, but when does it not? Does anyone really know CSS? That's like saying you're proficient in Excel (total shenanigans). 
 
-Deployment had some difficulties. I opted to use Github pages since I've used that for vary basic SPAs in the past. However, it's not really optimized for clojurescript deployments and took some finagling. Ended up creating prod branches I didn't need. Ultimately resulted in me renaming folders to jive with their process to make it work which just seemed silly and unpolished. 
+Deployment had some difficulties. I opted to use Github pages since I've used that for vary basic SPAs in the past. However, it's not really optimized for clojurescript deployments and took some finagling. Ended up creating prod branches I didn't need. Ultimately resulted in me renaming folders to jive with their process to make it work which just seemed hacky.
 
-### Getting setup
-run 'npx shadow-cljs watch app' in terminal in the directory of the shadow-cljs file
+### Future Enhancements
+* Mobile Responsiveness
+* Reset button
+* 2 Player functionality
+* Player chat
 
-run 'node b-n-c.js' in new terminal window
+### Running it locally on your machine
+* Pull down the copy of the repo
+* Run 'npx shadow-cljs server'. Use this info set up your REPL.
+** Note: If you use Cursive in IntelliJ Idea, you will need a deps.edn as well
+* Click on the server link in the terminal and click 'watch' or run 'npx shadow-cljs watch app' in terminal
+* Navigate to the localhost designated for the browser
