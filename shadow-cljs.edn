@@ -10,7 +10,7 @@
                ;       :main      katie-e-vogel-main.core/init!}}
 
                {:app {:target :browser
-                      :output-dir "public/js"
+                      :output-dir "docs/js"
                       :main katie-e-vogel-main.core/init!
                       :modules {:main {:entries [katie-e-vogel-main.core]}}
                       :devtools {:repl-init-ns katie-e-vogel-main.core
