@@ -22,8 +22,6 @@ Deployment had some difficulties. I opted to use Github pages since I've used th
 * Player chat
 
 ### Running it locally on your machine
-* Pull down the copy of the repo
 * Run 'npx shadow-cljs server'. Use this info set up your REPL.
-* * Note: If you use Cursive in IntelliJ Idea, you will need a deps.edn as well
-* Click on the server link in the terminal and click 'watch' or run 'npx shadow-cljs watch app' in terminal
+* Click on the server link in the terminal and click 'Watch' OR run 'npx shadow-cljs watch app' in terminal
 * Navigate to the localhost designated for the browser
