@@ -20,6 +20,7 @@ Deployment had some difficulties. I opted to use Github pages since I've used th
 * Reset button
 * 2 Player functionality
 * Player chat
+* UI/UX improvements
 
 ### Running it locally on your machine
 * Run 'npx shadow-cljs server'. Use this info set up your REPL.
