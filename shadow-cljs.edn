@@ -1,8 +1,5 @@
 ;; shadow-cljs configuration
 {:source-paths ["src"]
- :dependencies [[binaryage/oops "0.7.0"]
-                [macchiato/hiccups "0.4.1"]
-                [cljs-ajax "0.8.1"]]
 
  :builds
                ;{:app {:target    :node-script
