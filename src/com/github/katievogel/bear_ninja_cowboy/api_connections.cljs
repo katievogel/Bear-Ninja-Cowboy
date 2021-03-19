@@ -1,4 +1,4 @@
-(ns katie-e-vogel-main.api-connections
+(ns com.github.katievogel.bear-ninja-cowboy.api-connections
   (:require [ajax.core :refer [GET]]))
 
 ;connect to giphy API
@@ -35,5 +35,3 @@
                       (println "success" v))))
 ;@result
 ;(get-in @result [:data 0 :images :downsized_medium :url])
-
-
