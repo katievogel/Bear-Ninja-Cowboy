@@ -11,9 +11,9 @@
 
                {:app {:target :browser
                       :output-dir "docs/js"
-                      :main katie-e-vogel-main.core/init!
-                      :modules {:main {:entries [katie-e-vogel-main.core]}}
-                      :devtools {:repl-init-ns katie-e-vogel-main.core
+                      :main com.github.katievogel.bear-ninja-cowboy.core/init!
+                      :modules {:main {:entries [com.github.katievogel.bear-ninja-cowboy.core]}}
+                      :devtools {:repl-init-ns com.github.katievogel.bear-ninja-cowboy.core
                                  :repl-pprint true
-                                 :http-root "public/"
+                                 :http-root "docs/"
                                  :http-port 8080}}}}
