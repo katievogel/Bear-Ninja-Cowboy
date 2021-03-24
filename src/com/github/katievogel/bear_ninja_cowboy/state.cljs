@@ -1,4 +1,5 @@
-(ns com.github.katievogel.bear-ninja-cowboy.state)
+(ns com.github.katievogel.bear-ninja-cowboy.state
+  (:require [reagent.core :as r]))
 
 (def initial-state
   {:p1-choice nil
@@ -7,4 +8,4 @@
    :p1-score 0
    :p2-score 0})
 
-(defonce app-db (atom initial-state))
+(defonce app-db (r/atom initial-state))

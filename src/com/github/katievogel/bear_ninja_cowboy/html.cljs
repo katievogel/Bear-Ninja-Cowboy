@@ -1,4 +1,5 @@
-(ns com.github.katievogel.bear-ninja-cowboy.html)
+(ns com.github.katievogel.bear-ninja-cowboy.html
+  (:require [com.github.katievogel.bear-ninja-cowboy.player-interaction :refer [click-button]]))
 
 (defn Jumbotron []
   [:div.jumbotron.jumbotron-fluid
@@ -27,12 +28,26 @@
         [:cowboy :ninja] "Ninja strikes cowboy! Player 2 wins!"
         nil))]])
 
+
+
 (defn ChoicesButtons
   []
   [:div.choices-box.row
-   [:div.choice.container-md.col-3 [:button {:type "input" :class "btn-b"} [:img {:src "assets/happy-bear.jpg"}]]]
-   [:div.choice.container-md.col-3 [:button {:type "input" :class "btn-n"} [:img {:src "assets/cat-ninja.jpg"}]]]
-   [:div.choice.container-md.col-3 [:button {:type "input" :class "btn-c"} [:img {:src "assets/ridiculous-cowboy.jpg"}]]]])
+   [:div.choice.container-md.col-3 [:button {:type "input" :class "btn-b"
+                                             :on-click (fn [event]
+                                                         (println "bear" event)
+                                                         (click-button :bear))}
+                                    [:img {:src "assets/happy-bear.jpg"}]]]
+   [:div.choice.container-md.col-3 [:button {:type "input" :class "btn-n"
+                                             :on-click (fn [event]
+                                                         (println "ninja" event)
+                                                         (click-button :ninja))}
+                                    [:img {:src "assets/cat-ninja.jpg"}]]]
+   [:div.choice.container-md.col-3 [:button {:type "input" :class "btn-c"
+                                             :on-click (fn [event]
+                                                         (println "cowboy" event)
+                                                         (click-button :cowboy))}
+                                    [:img {:src "assets/ridiculous-cowboy.jpg"}]]]])
 
 (defn WinnerMessage
   [winner-gif]
@@ -52,19 +67,19 @@
 (defn BearNinjaCowboyApp
   [{:keys [p1-choice p2-choice winner-gif p1-score p2-score] :as v}]
   [:div
-   (Jumbotron)
+   [Jumbotron]
    [:div
     [:div.container.game-container
      (when (and p1-choice p2-choice)
-       (GameResult p1-choice p2-choice))
+       [GameResult p1-choice p2-choice])
      [:div.gif-box.row
-      (PlayerScore "P1 Score" p1-score)
+      [PlayerScore "P1 Score" p1-score]
       [:div.funny-gif
        (if winner-gif
-         (WinnerMessage winner-gif)
-         (GameRules))]
-      (PlayerScore "P2 Score" p2-score)]
-     (ChoicesButtons)]]
+         [WinnerMessage winner-gif]
+         [GameRules])]
+      [PlayerScore "P2 Score" p2-score]]
+     [ChoicesButtons]]]
 
    #_[:hr]
    #_[:h1 "debug"]
