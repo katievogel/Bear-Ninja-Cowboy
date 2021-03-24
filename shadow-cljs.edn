@@ -1,6 +1,5 @@
 ;; shadow-cljs configuration
-{:source-paths ["src"]
-
+{:deps true
  :builds
                ;{:app {:target    :node-script
                ;       :output-to "b-n-c.js"
